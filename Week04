@@ -38,9 +38,9 @@ payContract = do
 
 payTrace :: Integer -> Integer -> EmulatorTrace ()
 payTrace x y = do
-    let recipient = pubKeyHash $ walletPubKey $ Wallet 2
-        payment1 = PayParams recipient x
-        payment2 = PayParams recipient y
+    let ppRecipient = pubKeyHash $ walletPubKey $ Wallet 2
+        payment1 = PayParams ppRecipient x
+        payment2 = PayParams ppRecipient y
 
     h1 <- activateContractWallet (Wallet 1) payContract 
     callEndpoint @"pay" h1 payment1
