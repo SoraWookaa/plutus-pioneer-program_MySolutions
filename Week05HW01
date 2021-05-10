@@ -38,8 +38,8 @@ import           Wallet.Emulator.Wallet
 -- has signed the transaction and if the specified deadline has not passed.
 mkPolicy :: PubKeyHash -> Slot -> ScriptContext -> Bool
 mkPolicy pkh deadline ctx = 
-    traceIfFalse "beneficiary's signature missing" checkSig      &&
-    traceIfFalse "deadline not reached"            checkDeadline
+    traceIfFalse "Signature missing"    checkSig      &&
+    traceIfFalse "Deadline passed"      checkDeadline
  where
     info :: TxInfo
     info = scriptContextTxInfo ctx
